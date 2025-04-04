@@ -1,10 +1,10 @@
 # User Model
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import User
 # Create your models here.
 from django.db import models
 
 
-class User(models.Model):
+class UserProfile(models.Model):
     USER_TYPES = [
         ('Staff', 'Staff'),
         ('Client', 'Client'),
@@ -28,6 +28,7 @@ class Availability(models.Model):
     ]
 
     customer = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'user_type': 'Client'}) #fk to Client user
+    #note that this means that there will be many availabilities to one customer
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='OPEN')
@@ -48,6 +49,9 @@ class Booking(models.Model):
     booking_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='OPEN')
 
+    class Meta:
+        ordering = ['-booking_date']
+    
     def __str__(self):
         return f"Booking {self.id} ({self.status})"
 
@@ -67,3 +71,4 @@ class TimeOffRequest(models.Model):
 
     def __str__(self):
         return f"TimeOffRequest {self.id} ({self.status})"
+

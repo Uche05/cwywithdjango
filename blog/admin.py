@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
-from .models import Availability, Booking, TimeOffRequest, UserProfile
+from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
+                     UserProfile)
 
 
 @admin.register(Availability)
@@ -11,7 +12,10 @@ class AvailabilityAdmin(SummernoteModelAdmin):
     list_filter = ('status',)
     summernote_fields = ('description',)  # Make sure this field exists in your model
 
-    
+@admin.register(ContactInterest)
+class ContactInterestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone_number', 'created_at')
+
     
 
 # Register your models here.

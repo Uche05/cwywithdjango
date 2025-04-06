@@ -94,3 +94,5 @@ class ContactInterest(models.Model):
 
     def __str__(self):
         return f"Interest from {self.name} ({self.email})"
+
+#add more

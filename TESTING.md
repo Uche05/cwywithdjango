@@ -1,15 +1,13 @@
 ### Testing
 
-
 ### Manual Testing
-
 
 ### User
 
 
 ### Validation Testing
 
-#### HTML and CSS Validation 
+#### HTML and CSS Validation
 
 #### Lighthouse/ Accessibility testing
 

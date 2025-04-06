@@ -29,7 +29,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "PRODUCTION" not in os.environ
+# DEBUG = "PRODUCTION" not in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com',]
 
@@ -141,10 +142,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-#LOGIN
-#LOGIN_URL = '/accounts/login/'  # or wherever your login view is
-
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",

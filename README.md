@@ -1,6 +1,8 @@
+
 # [CWY-P4](link)
 
 - My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members, administrative workers, etc.
+- 
 - This project for the sake of client, customer confidentiality (as it solves a real-life organization) will be named CWY-P4 or CWY or My Project 4.
 
 ## Table of Contents
@@ -51,6 +53,7 @@
 Rewrite what Project 4 is about and a list of necessary general features and how it solves a problem.
 
 ## UX
+
 #### User Experience Documentation
 
 ### Target-audience
@@ -60,28 +63,28 @@ Rewrite what Project 4 is about and a list of necessary general features and how
 ### User-stories
 
 #### New / Unregistered User
+
 - As a new user (visitor), I want to be able to register my interest to work with CWY, via a form and expect some action to be performed such as a confirmation email or some element pop-up displayed so that I can be ensured the CWY received my interest.
 
 #### Registered Users
+
 - As a staff user, I want to be able to log in to my account, using the details sent to me, so I can know I am part of the organization.
 - As a staff user, I want to be able to set my non-availability after login so that my bosses and the workplace I have will know when I am not available/ when I am on holiday.
 - As a staff user, I want to be able to see necessary details about myself after login, so that I know the company has needed details about me.
-As a staff user, I want to see what work schedule has been booked into my 
-
+  As a staff user, I want to see what work schedule has been booked into my
 - As a client user, I want to be able to create an account, so that I can use their client dashboard system and they know I am their client.
 - As a client user, I want to be able to log in to the client portal, using my login details, so that I can use their client dashboard system.
 - As a client user, I want to be able to see the staff made available to my company, request change or set service unavailability so that I know which staff is cleaning when we need cleaning and let you know when we do not need cleaning.
 - As a client user, I want to be able to specify when I need or don’t need cleaners.
 - As a client user, I want to be able to log in requests and necessary complaints about the staff/ service being received.
-
 - As an admin, I want to be able to sign in using the details sent to me, so that I can have access to necessary employees and workplace details.
 - As an admin, I want to be able to view the availability of my staff and the client they work for, so I can approve or disapprove their availability such as holiday.
 - As an admin, I want to  be able to view the requests and complaints sent to me by the client.
 
-
 ## Pre-development
 
 ### Colour-scheme
+
 Copy from the cwyspecs Word document made!!!
 
 ### Typography
@@ -113,14 +116,13 @@ Copy from the cwyspecs Word document made!!!
 
 ## Testing
 
-The portal has been well tested and the results can be viewed <a href= "#TESTING.md">here</a>.
+The portal has been well tested and the results can be viewed `<a href= "#TESTING.md">`here `</a>`.
 
 ### Future Updates
 
 - Update A
 - Update B
 - Update C
-
 
 ## Deployment
 
@@ -180,17 +182,15 @@ The following are credits to various people and technologies that have directly 
 
 ### Content and Code
 
-| Source                                                  | Location                                                                                                    | Notes                                                                                                                                                                                                                  |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives)    | Markdown                                                                                                    | Markdown template was from the given, [github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4)               |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-| [A](https://linktoGithubhere!!) |stuff about it |More stuff...     |
-
-
+| Source                                                                                               | Location       | Notes                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives) | Markdown       | Markdown template was from the given,[github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4) |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
 
 ### Acknowledgements
 

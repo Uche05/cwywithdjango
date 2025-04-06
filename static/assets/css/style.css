@@ -1,0 +1,357 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* CSS Variables */
+:root{
+    --argentian-blue :#69b2e0;
+    --naples-yellow :#efcb68;
+    --honeydew :#e1efe6;
+    --powder-blue :#b2c2ce;
+    --rich-black :#000411;
+    --emerald: #50C878;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    font-family: 'Work Sans';
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    /* Header's position has to be "relative" to nav-toggle's menu */
+    position: relative;
+    z-index: 100;
+}
+
+
+
+header a {
+    text-decoration: none;
+    color: var(--rich-black);
+}
+
+#menu a {
+    color: var(--rich-black);
+}
+
+#menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1.5px;
+    font-size: 105%;
+}
+
+#menu>li {
+    margin-bottom: 1rem;
+}
+
+
+#menu a:hover {
+    border-bottom: 3px solid var(--rich-black);
+    border-radius: 0 0 1% 1%;
+}
+
+nav{
+    position: absolute;
+    background-color: var(--honeydew);
+    width: 100%;
+    left: 0;
+    top: 100%;
+    padding: 0 1rem;
+    box-shadow: 0 2px 2px var(--rich-black);
+    /* Keep the nav off for mobile phones to use toggle to set it to "block" */
+    display: none;
+}
+
+/* Nav toggle */
+#nav-tog:checked ~ nav {
+    display: block !important;
+}
+
+#nav-tog {
+    position: absolute;
+    left: -1000px;
+}
+
+.nav-tog-label {
+    font-size: 3rem;
+    color: var(--rich-black);
+}
+
+/* Main content styling  */
+
+main{
+    font-family: 'Noto Sans', 'Open Sans', 'Roboto';
+    margin: 5px auto;
+    width: fit-content;
+    font-size: 1.5rem;
+    text-align: center;
+}
+/* Cleaning welcome div style */
+
+#cleaning-welcome{
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+#cleaning-welcome img {
+    width: 100%;
+    display: block;
+}
+
+/* Cleaning section and  Button styling */
+#btn-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 30px;
+}
+
+#btnContact,
+#btnLogin1, #btnLogin2,
+#btnLoginAdv,
+#register-btn{
+    color: white;
+    padding: 0.8rem 0.5rem;
+    border: none;
+    margin: 1.5rem;
+    cursor: pointer;
+    height: 60px;
+    width: 120px;
+    font-size: medium;
+    border-radius: 10px;
+    font-family: 'Noto Sans';
+}
+
+#btnLogin1{
+    background-color: var(--argentian-blue);
+}
+
+#btnLogin2{
+    background-color: var(--naples-yellow);
+}
+
+#btnContact{
+    background-color: var(--rich-black);
+}
+
+#btnLoginAdv,
+#register-btn{
+    background-color: var(--emerald);
+}
+
+/* Cleaning services 2 */
+#cleaning-services-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+#cleaning-services-2 p{
+    text-align: center;
+    font-family: "Noto Sans";
+    font-size: 1.5rem;
+    margin: 1rem;
+    padding: 1%;
+}
+
+/* Review Section */
+.reviews-text{
+    padding: 10px;
+    text-align: center;
+    margin: 1rem;
+}
+
+.testimonial-container{
+    padding: 20px;
+    max-width: 500px;
+    margin: 5% auto;
+    border-radius: 14px;
+    border: #50C878 2px solid;
+}
+
+.testimonial{
+    margin-top: 2rem;
+}
+
+.star{
+    color: var(--naples-yellow);
+}
+
+.active{
+    display: block;
+}
+
+.not-active{
+    display: none;
+}
+
+/* Form style */
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items from the top */
+    align-items: center;
+    margin: 3rem auto;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 30px var(--powder-blue);
+    padding: 20px;
+    gap: 15px;
+    background-color: var(--argentian-blue);
+}
+
+input, textarea {
+    width: 100%;  /* Make fields take full width */
+    padding: 5px;
+    margin: 5px 0;  /* Add more space between fields */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;  /* Make the text inside inputs more readable */
+}
+
+input:focus, textarea:focus {
+    border-color: var(--emerald); /* Change border color on focus */
+    outline: none;
+}
+
+label {
+    color: white;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+}
+
+/* Error messages */
+form .errorlist {
+    color: #ff0000;  /* Red for errors */
+    font-size: 12px;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+form .errorlist li {
+    margin-bottom: 5px;
+}
+
+form .form-error {
+    font-size: 12px;
+    color: #ff4d4d;
+}
+
+/* Success message */
+form .form-success {
+    font-size: 12px;
+    color: #4CAF50;
+}
+
+/* Submit button styling */
+form button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background-color: var(--emerald);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form button:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--emerald);
+}
+
+
+/* Footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: var(--powder-blue);
+    color: white;
+    padding: 20px;
+}
+
+#footer-links, #social-networks{
+    list-style: none;
+    text-decoration: none;
+    padding-bottom: 20px;
+}
+
+#footer-links li, #social-networks li{
+    display: block;
+    margin: 1rem;
+}
+
+#social-networks{
+    padding-top: 1px;
+    font-size: 200%;
+}
+
+#social-networks a:hover, 
+#footer-links a:hover{
+    color: var(--rich-black);
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 1px 1px;
+}
+
+/* Media Queries for larger devices */
+
+@media screen and (min-width: 768px) {
+    /* Header and nav */
+
+    nav{
+        display: block;
+        position: relative;
+        box-shadow: none;
+        width: fit-content;
+        padding-right: 1rem;
+        background-color: white;
+    }
+
+    #menu{
+        display: flex;
+    }
+
+    #menu>li{
+        padding-left: 1rem;
+    }
+
+    .nav-tog-label{
+        display: none;
+    }
+
+    #logo{
+        font-size: 280%;
+        line-height: 75px;
+        margin: 0 0.5rem;
+    }
+
+    #btn-section{
+        display: block;
+    }
+}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<main>
+
+    <div id="cleaning-welcome">
+        <img src="{% static 'assets/images/cleaning1.jpg' %}" loading="lazy" alt="cleaning tables">
+    </div>
+
+    <section id="btn-section">
+        <h2>Cleaning with Yink?</h2>
+        <a href="{% url 'contact' %}"><button type="button">Contact Us</button></a>
+        <a href="{% url 'jobpost' %}"><button type="button">Job Posts</button></a>
+        {% comment %} <a href="{% url 'staff_login' %}"><button type="button">Staff Login</button></a>
+        <a href="{% url 'admin:login' %}"><button type="button">Admin Login</button></a> {% endcomment %}
+    </section>
+
+    <section id="cleaning-services-2">
+        <h2>Our Cleaning Services</h2>
+        <i class="fa-solid fa-star"></i>
+        <p>
+            Our commercial cleaning services ensure a spotless, hygienic, and professional workspace, enhancing both
+            employee productivity and client impressions. We offer tailored cleaning solutions for offices, retail
+            spaces, and industrial facilities, using industry-grade equipment and eco-friendly products. Whether you
+            need daily maintenance or deep cleaning, our expert team delivers reliability and excellence every time.
+        </p>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <h2 class="reviews-text">What Our Clients Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial active">
+                <i class="fa-solid fa-star star"></i>
+                <p>"This cleaning service exceeded my expectations! Our office has never looked better."</p>
+                <h4>X</h4>
+            </div>
+            <div class="testimonial not-active">
+                <i class="fa-solid fa-star star"></i>
+                <p>"Professional, reliable, and thorough! Highly recommended for commercial spaces."</p>
+                <h4>Y</h4>
+            </div>
+            <div class="testimonial not-active">
+                <i class="fa-solid fa-star star"></i>
+                <p>"They always go the extra mile to keep our workspace fresh and clean!"</p>
+                <h4>Z</h4>
+            </div>
+
+            <i class="fa-solid fa-chevron-right">
+                <button onclick="next" type="button"></button>
+            </i>
+        </div>
+    </section>
+
+</main>
+
+
+{% endblock %}

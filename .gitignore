@@ -6,3 +6,4 @@ cloudinary_python.txt
 core.python
 core.mongo
 core.Microsoft
+blog/fixtures/

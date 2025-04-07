@@ -1,5 +1,4 @@
-
-# [CWY-P4](link)
+#  [CWY-P4](link)
 
 - My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members, administrative workers, etc.
 - 
@@ -45,6 +44,10 @@
 
 ## Mockup-screenshots
 
+Here is the locally deployed look:
+
+<img src = "documentation/screenshotone.png" alt= "local-screenshot">
+
 <img src="#" alt = "screenshot 1">
 <img src= "#" alt= "screenshot 2">
 
@@ -71,8 +74,7 @@ Rewrite what Project 4 is about and a list of necessary general features and how
 - As a staff user, I want to be able to log in to my account, using the details sent to me, so I can know I am part of the organization.
 - As a staff user, I want to be able to set my non-availability after login so that my bosses and the workplace I have will know when I am not available/ when I am on holiday.
 - As a staff user, I want to be able to see necessary details about myself after login, so that I know the company has needed details about me.
-  As a staff user, I want to see what work schedule has been booked into my
-- As a client user, I want to be able to create an account, so that I can use their client dashboard system and they know I am their client.
+- As a staff user, I want to see what work schedule has been booked into my dashboard.
 - As a client user, I want to be able to log in to the client portal, using my login details, so that I can use their client dashboard system.
 - As a client user, I want to be able to see the staff made available to my company, request change or set service unavailability so that I know which staff is cleaning when we need cleaning and let you know when we do not need cleaning.
 - As a client user, I want to be able to specify when I need or don’t need cleaners.
@@ -81,38 +83,74 @@ Rewrite what Project 4 is about and a list of necessary general features and how
 - As an admin, I want to be able to view the availability of my staff and the client they work for, so I can approve or disapprove their availability such as holiday.
 - As an admin, I want to  be able to view the requests and complaints sent to me by the client.
 
+Future
+
+- As a client user, I want to be able to create an account, so that I can use their client dashboard system and they know I am their client.
+
 ## Pre-development
 
 ### Colour-scheme
 
-Copy from the cwyspecs Word document made!!!
+<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">
 
 ### Typography
+###### From Google Fonts:
+- Noto Sans
+- Open Sans
+- Work Sans
 
 ### Wireframes
+<img src = "documentation/wireframe.png" alt = "wireframes screenshot">
 
 ### Flow-diagram
 
+1. Unregistered user
+
+Home page -> contact page
+
+2. Registered User
+
+- Employees
+Home page -> Staff-Login -> Staff Dashboard
+
+
+- Clients
+Home page -> Client Login -> Client Dashboard
+
+- Admin
+Home page -> Admin Login -> Admin Dashboard
+
+- There is no sign up feature yet!!
 ### ERD
 
 ## Features
 
 ## Developer-tools
 
+- CSS to design and style the pre-existing HTML structure
 - [Heroku](https://dashboard.heroku.com/apps) used for hosting the deployed front-end & back-end site.
+- HTML to give my website full structure
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
-- [GitPod&#39;s Workspace](https://codeinstitute-ide.net/workspaces) used to manage and run the development workspace for the Product Sales Aid project seamlessly.
-- [Google Sheets](https://docs.google.com/spreadsheets/d/1QKMGuemIVcsDW5-9jmrrAfPrRtCDpV8x_o3t4_soqMk/edit?gid=0#gid=0) used to store user inputted data and will be the sheet the Uche Company uses to view their customer orders.
 - [PEP8 CI Linter](https://pep8ci.herokuapp.com/#) used to do checks for errors on my Python Code.
-- [Microsoft Visio](https://www.microsoft365.com/launch/Visio/?auth=2&home=1) used as flowchart making tool to make the steps the application would take.
+- Python programming language with Django Framework.
 - [VSCode](https://code.visualstudio.com/) used for local IDE for development. It possessed extensions which helped me immensely during my making of the site.
-- [MS Copilot]() was used to help me understand the errors brought out in the PEP8 Linter from CI and I used it as a tool to help me better understand the meaning of those errors and how to face them such as the E128 continuation line under-indented for visual indent. It was used as a tool to also aid me better understand the "gspread" and "google-auth" packages as looking at documentation was very uncanny.
-- [W3C HTML Validator](https://validator.w3.org/) used to do checks for errors on HTML elements of the official website.
 
 ### Python Libraries and Packages Used
 
-- Django was the main library of the project
+- Django was the main Python framework used in the project
+- asgiref==3.8.1
+- bleach==6.2.0
+- dj-database-url==0.5.0
+- django-summernote==0.8.20.0
+- gunicorn==20.1.0
+- psycopg2==2.9.10
+- setuptools==78.1.0
+- sqlparse==0.5.3
+- tzdata==2025.2
+- webencodings==0.5.1
+- whitenoise==5.3.0
+
 
 ## Testing
 
@@ -120,9 +158,8 @@ The portal has been well tested and the results can be viewed `<a href= "#TESTIN
 
 ### Future Updates
 
-- Update A
-- Update B
-- Update C
+- Clients to be able to create accounts.
+- Email notifications after registering interest.
 
 ## Deployment
 
@@ -185,7 +222,7 @@ The following are credits to various people and technologies that have directly 
 | Source                                                                                               | Location       | Notes                                                                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives) | Markdown       | Markdown template was from the given,[github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4) |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| [As Full Stack Website](https://uche05.github.io/AsFullStackWebsite/)                                                                         | HTML and CSS and JS templates where extracted from here | More stuff...                                                                                                                                                                      |
 | [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
 | [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
 | [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |

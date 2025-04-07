@@ -2,29 +2,31 @@
 
 ### Manual Testing
 
+After deployment, the heroku app does not work.
+
+Time constraints disallowed for future debugging and testing.
+
 ### User
 
+There are different user types:
+
+1. Unregistered users: Here users do not interact mich with databases but only register their interest and the database stores their information.
+2. Registered Users: Here users interact very well with databases.
 
 ### Validation Testing
 
 #### HTML and CSS Validation
 
+Django HTML seems fine
+
 #### Lighthouse/ Accessibility testing
 
 #### Python Testing
 
-PEP8 - Python style guide checker imported - https://pypi.org/project/pep8/
+Python Testing not done
 
-All code validated and where lines were showing as too long they were adjust which was fixed by adjusting code to where they need to be.
-
-There are no issues to report from the linter of PEP8
-
-`<img src="documentation/testingwithlinter1.png" alt="Testing Linter Page">`
-
-It also passed through the W3C HTML Validator without any errors:
-
-`<img src="documentation/htmlcheck.png" alt="Html validator">`
+HTML Testing not done
 
 ### Bugs
 
-With the current code there are ***NO*** issues to report.
+There were bugs after deployment, Server Error 500

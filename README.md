@@ -48,7 +48,7 @@ Here is the locally deployed look:
 <img src = "documentation\screenshotone.png" alt= "local-screenshot">
 
 Here is a video of the deployed demo
-<video src = "documentation\local_demo.mp4"></video>
+<a href = "documentation\local_demo.mp4">here</a>
 
 ## Basic-content
 

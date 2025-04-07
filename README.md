@@ -1,4 +1,4 @@
-# [Y-P4](link)
+# [CWY-P4](link)
 
 - My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members, administrative workers, etc.
 - This project for the sake of client, customer confidentiality (as it solves a real-life organization) will be named CWY-P4 or CWY or My Project 4.

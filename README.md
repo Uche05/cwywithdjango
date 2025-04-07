@@ -46,7 +46,7 @@
 
 Here is the locally deployed look:
 
-`<img src = "documentation/screenshotone.png" alt= "local-screenshot">`
+`<img src = "documentation\screenshotone.png" alt= "local-screenshot">`
 
 <img src="#" alt = "screenshot 1">
 <img src= "#" alt= "screenshot 2">
@@ -91,7 +91,7 @@ Future
 
 ### Colour-scheme
 
-`<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">`
+`<img src = "documentation\screenshotcolorscheme.png" alt = "color schemes screenshot">`
 
 ### Typography
 
@@ -103,7 +103,7 @@ Future
 
 ### Wireframes
 
-`<img src = "documentation/wireframe.png" alt = "wireframes screenshot">`
+`<img src = "documentation\wireframe.png" alt = "wireframes screenshot">`
 
 ### Flow-diagram
 

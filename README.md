@@ -1,7 +1,6 @@
 # [Y-P4](link)
 
 - My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members, administrative workers, etc.
-- 
 - This project for the sake of client, customer confidentiality (as it solves a real-life organization) will be named CWY-P4 or CWY or My Project 4.
 
 ## Table of Contents
@@ -46,7 +45,7 @@
 
 Here is the locally deployed look:
 
-<img src = "documentation/screenshotone.png" alt= "local-screenshot">
+<img src = "documentation\screenshotone.png" alt= "local-screenshot">
 
 
 ## Basic-content
@@ -89,7 +88,7 @@ Future
 
 ### Colour-scheme
 
-<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">
+<img src = "documentation\screenshotcolorscheme.png" alt = "color schemes screenshot">
 
 ### Typography
 
@@ -101,7 +100,7 @@ Future
 
 ### Wireframes
 
-<img src = "documentation/wireframe.png" alt = "wireframes screenshot">
+<img src = "documentation\wireframe.png" alt = "wireframes screenshot">
 
 ### Flow-diagram
 

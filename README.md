@@ -46,10 +46,10 @@
 
 Here is the locally deployed look:
 
-`<img src = "documentation\screenshotone.png" alt= "local-screenshot">`
+<img src = "documentation/screenshotone.png" alt= "local-screenshot">
 
-<img src="#" alt = "screenshot 1">
-<img src= "#" alt= "screenshot 2">
+Here is video demo of the locally deployed site:
+<video src = "documentation/local_demo.mp4" alt = "video -demo"></video>
 
 ## Basic-content
 
@@ -91,7 +91,7 @@ Future
 
 ### Colour-scheme
 
-`<img src = "documentation\screenshotcolorscheme.png" alt = "color schemes screenshot">`
+<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">
 
 ### Typography
 
@@ -103,7 +103,7 @@ Future
 
 ### Wireframes
 
-`<img src = "documentation\wireframe.png" alt = "wireframes screenshot">`
+<img src = "documentation/wireframe.png" alt = "wireframes screenshot">
 
 ### Flow-diagram
 
@@ -211,7 +211,7 @@ ContactInterest Table (non-relational to the rest of the tables)
 
 ## Testing
 
-The portal has been well tested and the results can be viewed `<a href= "#TESTING.md">`here `</a>`.
+The portal has been well tested and the results can be viewed <a href= "#TESTING.md">here </a>.
 
 ### Future Updates
 

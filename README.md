@@ -48,8 +48,6 @@ Here is the locally deployed look:
 
 <img src = "documentation/screenshotone.png" alt= "local-screenshot">
 
-Here is video demo of the locally deployed site:
-<video src = "documentation/local_demo.mp4" alt = "video -demo"></video>
 
 ## Basic-content
 

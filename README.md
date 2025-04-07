@@ -1,4 +1,4 @@
-#  [CWY-P4](link)
+# [Y-P4](link)
 
 - My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members, administrative workers, etc.
 - 
@@ -46,7 +46,7 @@
 
 Here is the locally deployed look:
 
-<img src = "documentation/screenshotone.png" alt= "local-screenshot">
+`<img src = "documentation/screenshotone.png" alt= "local-screenshot">`
 
 <img src="#" alt = "screenshot 1">
 <img src= "#" alt= "screenshot 2">
@@ -91,16 +91,19 @@ Future
 
 ### Colour-scheme
 
-<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">
+`<img src = "documentation/screenshotcolorscheme.png" alt = "color schemes screenshot">`
 
 ### Typography
+
 ###### From Google Fonts:
+
 - Noto Sans
 - Open Sans
 - Work Sans
 
 ### Wireframes
-<img src = "documentation/wireframe.png" alt = "wireframes screenshot">
+
+`<img src = "documentation/wireframe.png" alt = "wireframes screenshot">`
 
 ### Flow-diagram
 
@@ -111,29 +114,84 @@ Home page -> contact page
 2. Registered User
 
 - Employees
-Home page -> Staff-Login -> Staff Dashboard
-
-
+  Home page -> Staff-Login -> Staff Dashboard
 - Clients
-Home page -> Client Login -> Client Dashboard
-
+  Home page -> Client Login -> Client Dashboard
 - Admin
-Home page -> Admin Login -> Admin Dashboard
-
+  Home page -> Admin Login -> Admin Dashboard
 - There is no sign up feature yet!!
+
 ### ERD
 
-## Features
+UserProfile Table
 
-## Developer-tools
+| Key | Column Name | Type                              |
+| --- | ----------- | --------------------------------- |
+| PK  | UserID      | SERIAL                            |
+|     | Name        | VARCHAR(255)                      |
+|     | Email       | VARCHAR(255)                      |
+|     | Password    | EMAIL                             |
+|     | UserType    | ENUM ("Staff", "Client", "Admin") |
+|     | Location    | VARCHAR(255) only for clients     |
 
+ Availability Table
+
+| Key | Column Name | Type                              |
+| --- | ----------- | --------------------------------- |
+| PK  | AvailabilityID      | SERIAL                            |
+| FK to Users.UsersID | CustomerID  | VARCHAR(255)                      |
+|     | StartDate       | DATETIME                      |
+|     | EndDate    |     DATETIME                        |
+|     | Status    | ENUM ("OPEN", "CLOSED") |
+
+Bookings Table
+
+| Key | Column Name | Type                              |
+| --- | ----------- | --------------------------------- |
+| PK  | BookingsID  | SERIAL                            |
+| FK to Users.UsersID | CustomerID  | VARCHAR(255)      |
+| FK to Users.UsersID | EmployeeID  | VARCHAR(255)      |
+| FK  | AvailabilityID | SERIAL                         |
+|     | BookingDate   | DATETIME                        |
+|     | Status      |     ENUM ("OPEN", "CLOSED")       |
+
+
+TimeOffRequest Table
+
+| Key | Column Name | Type                              |
+| --- | ----------- | --------------------------------- |
+| PK  | ID      | SERIAL                            |
+| FK to Users.UsersID | EmployeeID  | VARCHAR(255)      |
+|     | StartDate       | DATETIME                      |
+|     | EndDate    |     DATETIME                        |
+|     | Reason    | TextField |
+|     | Status      |     ENUM ("OPEN", "CLOSED")       |
+
+ContactInterest Table (non-relational to the rest of the tables)
+
+| Key | Column Name | Type                              |
+| --- | ----------- | --------------------------------- |
+| PK  | UserID      | SERIAL                            |
+|     | Name        | VARCHAR(255)                      |
+|     | Email       | EMAIL                   |
+|     | Phone   | VARCHAR(11, with regex)                             |
+|     | Message    | ENUM ("Staff", "Client", "Admin") |
+|     | Created At   | VARCHAR(255) only for clients |
+
+# Features
+
+### Developer-tools
+
+- ChatGPT to aid me with major deployment issues and think of solutions to non-working code that I made.
 - CSS to design and style the pre-existing HTML structure
 - [Heroku](https://dashboard.heroku.com/apps) used for hosting the deployed front-end & back-end site.
 - HTML to give my website full structure
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
+- Microsoft Sniping tool to take screenshots of my local working deployment
 - [PEP8 CI Linter](https://pep8ci.herokuapp.com/#) used to do checks for errors on my Python Code.
 - Python programming language with Django Framework.
+- StackOverflow used to check for similar errors and their solutions.
 - [VSCode](https://code.visualstudio.com/) used for local IDE for development. It possessed extensions which helped me immensely during my making of the site.
 
 ### Python Libraries and Packages Used
@@ -151,13 +209,13 @@ Home page -> Admin Login -> Admin Dashboard
 - webencodings==0.5.1
 - whitenoise==5.3.0
 
-
 ## Testing
 
 The portal has been well tested and the results can be viewed `<a href= "#TESTING.md">`here `</a>`.
 
 ### Future Updates
 
+- Visible Webpage
 - Clients to be able to create accounts.
 - Email notifications after registering interest.
 
@@ -219,15 +277,12 @@ The following are credits to various people and technologies that have directly 
 
 ### Content and Code
 
-| Source                                                                                               | Location       | Notes                                                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives) | Markdown       | Markdown template was from the given,[github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4) |
-| [As Full Stack Website](https://uche05.github.io/AsFullStackWebsite/)                                                                         | HTML and CSS and JS templates where extracted from here | More stuff...                                                                                                                                                                      |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
-| [A](https://linktoGithubhere!!)                                                                         | stuff about it | More stuff...                                                                                                                                                                      |
+| Source                                                                                               | Location                                                | Notes                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives) | Markdown                                                | Markdown template was from the given,[github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4) |
+| [As Full Stack Website](https://uche05.github.io/AsFullStackWebsite/)                                   | HTML and CSS and JS templates where extracted from here | More stuff...                                                                                                                                                                      |
+
+
 
 ### Acknowledgements
 

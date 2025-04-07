@@ -7,6 +7,7 @@ from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
                      UserProfile)
 
 
+# done with aid from ChatGPT
 def home(request):
     user = request.user
     profile = UserProfile.objects.get(user=user)
@@ -61,6 +62,8 @@ from .forms import ContactInterestForm
 
 
 def contact(request):
+    # done with aid from ChatGPT
+    # this view handles the contact form submission
     if request.method == 'POST':
         form = ContactInterestForm(request.POST)
         if form.is_valid():  # is_valid() is called on the form, not the model

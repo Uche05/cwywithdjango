@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho
 DEBUG = "PRODUCTION" not in os.environ
 # DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost' ,'cwydjango-224468287572.herokuapp.com/', 'www.cleaningwithyink.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

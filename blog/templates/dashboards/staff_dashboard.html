@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Welcome, {{ user.user.first_name }} 👋</h2>
+
+    <div class="row">
+        <!-- Bookings Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5>Your Bookings</h5>
+                </div>
+                <div class="card-body">
+                    {% if bookings %}
+                        <ul class="list-group">
+                            {% for booking in bookings %}
+                                <li class="list-group-item">
+                                    {{ booking.service_name }} <br>
+                                    <small>{{ booking.date }} at {{ booking.time }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No bookings assigned to you yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Off Requests Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Your Time Off Requests</h5>
+                </div>
+                <div class="card-body">
+                    {% if time_off_requests %}
+                        <ul class="list-group">
+                            {% for request in time_off_requests %}
+                                <li class="list-group-item">
+                                    {{ request.start_date }} to {{ request.end_date }} <br>
+                                    <small>Status: {{ request.status }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No time off requests submitted.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -13,8 +13,9 @@
 
     <section id="btn-section">
         <h2>Cleaning with Yink?</h2>
-        <a href="{% url 'contact' %}"><button type="button">Contact Us</button></a>
-        <a href="{% url 'jobpost' %}"><button type="button">Job Posts</button></a>
+        <a href="{% url 'contact' %}"><button type="button" id= "btnContact" >Contact Us</button></a>
+        <a href="{% url 'staff_dashboard' %}"><button type="button" id= "btnLogin1" >Staff Login</button></a>
+        <a href="{% url 'client_dashboard' %}"><button type="button" id= "btnLogin2" >Client Login</button></a>
         {% comment %} <a href="{% url 'staff_login' %}"><button type="button">Staff Login</button></a>
         <a href="{% url 'admin:login' %}"><button type="button">Admin Login</button></a> {% endcomment %}
     </section>

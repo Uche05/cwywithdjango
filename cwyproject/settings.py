@@ -154,4 +154,18 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
 else:
     SECURE_SSL_REDIRECT = False
-#try running again and see if it works
+    
+#to let django point me in the right direction
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',  # You can use 'INFO' or 'DEBUG' for more verbosity
+    },
+}

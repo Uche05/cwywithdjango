@@ -29,7 +29,6 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = "PRODUCTION" not in os.environ
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cwydjango-224468287572.herokuapp.com',]
@@ -154,18 +153,3 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
 else:
     SECURE_SSL_REDIRECT = False
-    
-#to let django point me in the right direction
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'root': {
-#         'handlers': ['console'],
-#         'level': 'WARNING',  # You can use 'INFO' or 'DEBUG' for more verbosity
-#     },
-# }

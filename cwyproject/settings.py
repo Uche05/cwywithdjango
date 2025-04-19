@@ -30,9 +30,9 @@ SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = "PRODUCTION" not in os.environ
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', 'cwydjango-224468287572.herokuapp.com',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cwydjango-224468287572.herokuapp.com',]
 
 
 # Application definition
@@ -95,7 +95,7 @@ LOGIN_URL = 'login'          # name of the login URL
 
 #we are using postgres databases
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Password validation
@@ -149,3 +149,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
+# Only redirect HTTP to HTTPS in production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+else:
+    SECURE_SSL_REDIRECT = False
+#try running again and see if it works

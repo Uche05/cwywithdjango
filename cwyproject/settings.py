@@ -156,16 +156,16 @@ else:
     SECURE_SSL_REDIRECT = False
     
 #to let django point me in the right direction
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',  # You can use 'INFO' or 'DEBUG' for more verbosity
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'WARNING',  # You can use 'INFO' or 'DEBUG' for more verbosity
+#     },
+# }

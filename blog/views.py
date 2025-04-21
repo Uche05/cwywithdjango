@@ -52,15 +52,12 @@ def terms_and_conditions(request):
 def recruitment(request):
     if request.method == "POST":
         form = JobApplicationForm(request.POST, request.FILES)
-        if form.is_valid():
-            if 'declaration' not in request.POST:
-                form.add_error(None, "Please you must accept the declaration.")
+        if form.is_valid() and 'declaration' in request.POST:
+            form.save()
+            messages.success(request, "Your application has been submitted successfully!")
         else:
             form = JobApplicationForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                messages.success(request, "Your application has been submitted successfully!")
-                return redirect("recruitment")
+            messages.error(request, "Please check the form for errors.")
     return render(request, "blog/recruitment.html", {"form": form})  # Renders the recruitment page
 
 

@@ -5,50 +5,35 @@
     <h2>Apply for a job with Cleaning with Yink!</h2>
     
     {% if messages %}
-    {% for message in messages %}
-        <p class="form-{{ message.tags }}">{{ message }}</p>
-    {% endfor %}
-{% endif %}
+        {% for message in messages %}
+            <p class="form-{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
+        <!-- Loop through the form fields -->
         {% for field in form %}
-            <div class = "form-group">
+            <div class="form-group">
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                 {{ field }}
-                {{ if field.errors }}
+                {% if field.errors %}
                     <div class="form-errors">
-                        {{ field.errors }}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
                     </div>
-                {{ endif }}
-
+                {% endif %}
             </div>
         {% endfor %}
-        
-        <label for="{{ form.name.id_for_label }}">Full Name</label>
-        {{ form.name }}
-        {{ form.name.errors }}
 
-        <label for="{{ form.number.id_for_label }}">Phone Number</label>
-        {{ form.number }}
-        {{ form.number.errors }}
-
-        <label for="{{ form.email.id_for_label }}">Email</label>
-        {{ form.email }}
-        {{ form.email.errors }}
-
-        <label for="{{ form.start_date.id_for_label }}">Start Date</label>
-        {{ form.start_date }}
-        {{ form.start_date.errors }}
-
-        <label for="{{ form.file.id_for_label }}">Upload your CV</label>
-        {{ form.file }}
-        {{ form.file.errors }}
-
-        <input type="checkbox" name="declaration" required id="declaration" value="I hereby declare that the information provided in this application is true and complete to the best of my knowledge. I understand that any misrepresentation1 or omission of facts may be cause for rejection of this application or termination of employment.">
+        <!-- Declaration Checkbox -->
+        <input type="checkbox" name="declaration" required id="declaration" 
+               value="I hereby declare that the information provided in this application is true and complete to the best of my knowledge. I understand that any misrepresentation1 or omission of facts may be cause for rejection of this application or termination of employment.">
         <label for="declaration">Declaration</label>
-        
+
+        <!-- Non-field errors (e.g. form-wide validation errors) -->
         {{ form.non_field_errors }}
 
         <button id="register-btn" type="submit">Submit</button>

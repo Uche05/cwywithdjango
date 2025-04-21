@@ -13,7 +13,7 @@ urlpatterns = [
     path('terms-and-conditions/', views.terms_and_conditions, name='terms_and_conditions'),
     path('terms-of-use/', views.terms_of_use, name='terms_of_use'),
     path('contact/', views.contact, name='contact'),
-    path('recruitment/', views.recruitment, name='jobpost'),
+    path('recruitment/', views.recruitment, name='recruitment'),
     # Login page
     path('accounts/login/', LoginView.as_view(), name='login'),
     # Dashobards

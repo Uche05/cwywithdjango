@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, render
 
-from .forms import ContactInterestForm
+from .forms import ContactInterestForm, JobApplicationForm
 from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
                      UserProfile)
 
@@ -50,7 +50,7 @@ def terms_and_conditions(request):
 
 
 def recruitment(request):
-    return render(request, "blog/jobpost.html")  # Renders the recruitment page
+    return render(request, "blog/recruitment.html")  # Renders the recruitment page
 
 
 def contact(request):

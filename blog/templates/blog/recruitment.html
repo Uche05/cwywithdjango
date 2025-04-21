@@ -5,10 +5,10 @@
     <h2>Apply for a job with Cleaning with Yink!</h2>
     
     {% if messages %}
-        {% for message in messages %}
-            <p class="form-{{ message.tags }}">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+    {% for message in messages %}
+        <p class="form-{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+{% endif %}
 
     <form method="POST" action="{% url 'recruitment' %}" id="jobapplicationForm">
         {% csrf_token %}
@@ -34,12 +34,9 @@
         {{ form.file }}
         {{ form.file.errors }}
 
-        <label for="">Message</label>
-        <input type="checkbox" name="message" required id="message" value="I hereby declare that the information provided in this application is true and complete to the best of my knowledge. I understand that any misrepresentation1 or omission of facts may be cause for rejection of this application or termination of employment.">
-        <label for="message">I have read and agree to the terms and conditions</label>
-        {{ form.message }}
-        {{ form.message.errors }}
-
+        <input type="checkbox" name="declaration" required id="declaration" value="I hereby declare that the information provided in this application is true and complete to the best of my knowledge. I understand that any misrepresentation1 or omission of facts may be cause for rejection of this application or termination of employment.">
+        <label for="declaration">Declaration</label>
+        
 
         <button id="register-btn" type="submit">Submit</button>
     </form>

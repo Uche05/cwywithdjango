@@ -213,6 +213,7 @@ form {
 }
 
 input, textarea {
+    display: block;
     width: 100%;  /* Make fields take full width */
     padding: 5px;
     margin: 5px 0;  /* Add more space between fields */

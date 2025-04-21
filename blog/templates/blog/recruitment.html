@@ -12,7 +12,19 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        {% for field in form %}
+            <div class = "form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {{ if field.errors }}
+                    <div class="form-errors">
+                        {{ field.errors }}
+                    </div>
+                {{ endif }}
+
+            </div>
+        {% endfor %}
         
         <label for="{{ form.name.id_for_label }}">Full Name</label>
         {{ form.name }}

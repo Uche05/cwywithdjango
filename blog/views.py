@@ -50,6 +50,7 @@ def terms_and_conditions(request):
 
 
 def recruitment(request):
+    form = None
     try:
         if request.method == "POST":
             form = JobApplicationForm(request.POST, request.FILES)

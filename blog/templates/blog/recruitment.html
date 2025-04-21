@@ -10,9 +10,9 @@
     {% endfor %}
 {% endif %}
 
-    <form method="POST" enctype="multipart/form-data" action="{% url 'recruitment' %}"  id="jobapplicationForm">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.non_field_errors }}
+        {{ form.as_p }}
         
         <label for="{{ form.name.id_for_label }}">Full Name</label>
         {{ form.name }}

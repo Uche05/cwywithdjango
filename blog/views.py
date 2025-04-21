@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseServerError
 from django.shortcuts import redirect, render
 
 from .forms import ContactInterestForm, JobApplicationForm
@@ -50,16 +50,18 @@ def terms_and_conditions(request):
 
 
 def recruitment(request):
-    if request.method == "POST":
-        form = JobApplicationForm(request.POST, request.FILES)
-        if form.is_valid() and 'declaration' in request.POST:
-            form.save()
-            messages.success(request, "Your application has been submitted successfully!")
-        else:
+    try:
+        if request.method == "POST":
             form = JobApplicationForm(request.POST, request.FILES)
-            messages.error(request, "Please check the form for errors.")
-    return render(request, "blog/recruitment.html", {"form": form})  # Renders the recruitment page
-
+            if form.is_valid() and 'declaration' in request.POST:
+                form.save()
+                messages.success(request, "Your application has been submitted successfully!")
+            else:
+                form = JobApplicationForm()
+                messages.error(request, "Please check the form for errors.")
+        return render(request, "blog/recruitment.html", {"form": form})  # Renders the recruitment page
+    except Exception as e:
+        return HttpResponseServerError("An error occurred: " + str(e))
 
 def contact(request):
     # done with aid from ChatGPT

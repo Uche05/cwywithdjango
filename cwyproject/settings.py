@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cwydjango-224468287572.herokuapp.com',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cwydjango-224468287572.herokuapp.com', 'cleaningwithyink.com']
 
 
 # Application definition

@@ -94,8 +94,9 @@ def staff_dashboard(request):
     if profile.user_type != "Staff":
         return HttpResponseForbidden("Access denied")
 
-    bookings = Booking.objects.filter(employee=profile)
-    time_off_requests = TimeOffRequest.objects.filter(employee=profile)
+    else:
+        bookings = Booking.objects.filter(employee=profile)
+        time_off_requests = TimeOffRequest.objects.filter(employee=profile)
 
     return render(request, "dashboards/staff_dashboard.html", {
         "user": profile,
@@ -107,14 +108,30 @@ def staff_dashboard(request):
 # to make client and admin similar
 @login_required
 def client_dashboard(request):
+    # try:
+    #     profile = request.user.userprofile
+    #     if profile.user_type != "Client":
+    #         return render(request, "403.html")
+    # except UserProfile.DoesNotExist:
+    #     return render(request, "403.html")
+
+    # return render(request, "dashboards/client_dashboard.html")
     try:
         profile = request.user.userprofile
-        if profile.user_type != "Client":
-            return render(request, "403.html")
     except UserProfile.DoesNotExist:
-        return render(request, "403.html")
+        return HttpResponseForbidden("Profile missing")
 
-    return render(request, "dashboards/client_dashboard.html")
+    if profile.user_type != "Client":
+        return HttpResponseForbidden("Access denied")
+
+    bookings = Booking.objects.filter(employee=profile)
+    time_off_requests = TimeOffRequest.objects.filter(employee=profile)
+
+    return render(request, "dashboards/client_dashboard.html", {
+        "user": profile,
+        "bookings": bookings,
+        "time_off_requests": time_off_requests,
+    })
 
 
 @login_required

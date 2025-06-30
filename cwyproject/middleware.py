@@ -1,6 +1,6 @@
 from django.http import HttpResponseForbidden
 
-ALLOWED_IPS = ['172.23.128.1']
+ALLOWED_IPS = ['']
 
 class AdminAccessMiddleware:
     def __init__(self, get_response):

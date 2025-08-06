@@ -1,1 +1,1 @@
-web: gunicorn cwyproject.wsgi
+web: gunicorn django-blog-uckj.wsgi

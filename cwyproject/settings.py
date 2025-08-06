@@ -56,10 +56,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django-blog-uckj.middleware.AdminAccessMiddleware',
+    'cwyproject.middleware.AdminAccessMiddleware',
 ]
 
-ROOT_URLCONF = 'django-blog-uckj.urls'
+ROOT_URLCONF = 'cwyproject.urls'
 
 TEMPLATES = [
     {
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django-blog-uckj.wsgi.application'
+WSGI_APPLICATION = 'cwyproject.wsgi.application'
 
 LOGIN_URL = 'login'          # name of the login URL
 

@@ -1,8 +1,16 @@
 # User Model
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 # Create your models here.
 from django.db import models
+
+
+def file_size_validator(value):
+    # maximum file size in bytes, 1MB
+    max_size = 0.1 * 1024 * 1024
+    if value.size > max_size:
+        raise ValidationError(f"The file size should not exceed {max_size / (1024 * 1024)} MB.")
 
 
 class UserProfile(models.Model):
@@ -96,3 +104,20 @@ class ContactInterest(models.Model):
         return f"Interest from {self.name} ({self.email})"
 
 #add more
+class JobApplication(models.Model):
+    name = models.CharField(max_length=100)
+    number = models.CharField(
+        max_length=11,
+        validators=[
+            RegexValidator(
+                regex=r'^\d{11}$',
+                message='Phone number must be exactly 11 digits.'
+            )
+        ],
+        blank=True,
+        null=True
+    )
+    email = models.EmailField()
+    start_date = models.DateField()
+    file = models.FileField(upload_to='resumes/', validators=[file_size_validator])
+    

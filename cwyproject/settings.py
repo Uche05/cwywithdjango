@@ -29,10 +29,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "PRODUCTION" not in os.environ
-# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'django-blog-uckj-1f47f900818a.herokuapp.com', 'www.cleaningwithyink.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cwydjango-224468287572.herokuapp.com', 'cleaningwithyink.com']
 
 
 # Application definition
@@ -57,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cwyproject.middleware.AdminAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'cwyproject.urls'
@@ -79,6 +79,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cwyproject.wsgi.application'
 
+LOGIN_URL = 'login'          # name of the login URL
+
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -92,7 +95,7 @@ WSGI_APPLICATION = 'cwyproject.wsgi.application'
 
 #we are using postgres databases
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Password validation
@@ -146,3 +149,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
+# Only redirect HTTP to HTTPS in production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+else:
+    SECURE_SSL_REDIRECT = False

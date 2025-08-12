@@ -14,26 +14,30 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from dotenv import load_dotenv
 
 if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+#load .env file at project root
+load_dotenv
+TEMPLATES_DIR = os.path.join(BASE_DIR, '.env.cwyp1')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 if not SECRET_KEY:
     raise ValueError("No SECRET_KEY set in environment variables!")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', '') != 'False'
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 # the following code was a ChatGPT suggestion for the next 17 lines
 # to stop local HTTPS enforcements
@@ -42,7 +46,7 @@ DEBUG = os.environ.get('DEBUG', '') != 'False'
 # and vice versa when set to development
 
 
-DJANGO_ENV = os.environ.get('DJANGO_ENV', 'development')
+DJANGO_ENV = os.getenv('DJANGO_ENV', 'development').lower()
 
 # Security settings: only apply in production
 if DJANGO_ENV == 'production':
@@ -120,7 +124,7 @@ LOGIN_URL = 'login'          # name of the login URL
 
 #we are using postgres databases
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 # Password validation
@@ -174,8 +178,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
-# Only redirect HTTP to HTTPS in production
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-else:
-    SECURE_SSL_REDIRECT = False
+# # Only redirect HTTP to HTTPS in production
+# if not DEBUG:
+#     SECURE_SSL_REDIRECT = True
+# else:
+#     SECURE_SSL_REDIRECT = False

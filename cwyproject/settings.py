@@ -29,7 +29,26 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-&bhvggipvo)hexz=!5s71gsv42t+_b41h90*@n+vj9++#^bnho'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', '') != 'False'
+
+# the following code was a ChatGPT suggestion for the next 17 lines
+# to stop local HTTPS enforcements
+# by using a custom environment variable
+# to set HTTPS enforce when it is equal to production on Heroku
+# and vice versa when set to development
+
+
+DJANGO_ENV = os.environ.get('DJANGO_ENV', 'development')
+
+# Security settings: only apply in production
+if DJANGO_ENV == 'production':
+    SECURE_SSL_REDIRECT = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+else:
+    SECURE_SSL_REDIRECT = False
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-uckj-1f47f900818a.herokuapp.com']
 
@@ -56,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #setting a admin access middleware for security
     'cwyproject.middleware.AdminAccessMiddleware',
 ]
 

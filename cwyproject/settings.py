@@ -23,8 +23,8 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #load .env file at project root
-load_dotenv
-TEMPLATES_DIR = os.path.join(BASE_DIR, '.env.cwyp1')
+load_dotenv(dotenv_path=BASE_DIR / '.env.cwyp1')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -69,7 +69,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic'
     'django.contrib.staticfiles',
     'blog',
     'django_summernote',

@@ -44,7 +44,7 @@
                                 <strong>{{ availability.start_date|date:"M d, Y H:i" }} - {{ availability.end_date|date:"M d, Y H:i" }}</strong><br>
                                 Status: {{ availability.status }}<br>
 
-                                <!-- Edit button triggers modal or redirect -->
+                                <!-- edit button triggers modal or redirect -->
                                 <a href="{% url 'edit_availability' availability.id %}" id="btnLogin1">Edit</a>
 
                                 <!-- Delete button -->

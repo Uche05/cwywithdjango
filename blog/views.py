@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, HttpResponseServerError
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ContactInterestForm, JobApplicationForm
 from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
@@ -126,3 +127,48 @@ def admin_dashboard(request):
         return HttpResponseForbidden("Access denied")
 
     return render(request, "dashboards/admin_dashboard.html", {"user": profile})
+
+#log out view
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+#CRUD Capabilites
+@login_required
+def add_availability(request):
+    if request.method == 'POST':
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        status = request.POST.get('status')
+
+        Availability.objects.create(
+            customer=request.user,
+            start_date=start_date,
+            end_date=end_date,
+            status=status
+        )
+        return redirect('client_dashboard')
+
+    return render(request, 'add_availability.html')
+
+
+@login_required
+def edit_availability(request, pk):
+    availability = get_object_or_404(Availability, pk=pk, customer=request.user)
+
+    if request.method == 'POST':
+        availability.start_date = request.POST.get('start_date')
+        availability.end_date = request.POST.get('end_date')
+        availability.status = request.POST.get('status')
+        availability.save()
+        return redirect('client_dashboard')
+
+    return render(request, 'edit_availability.html', {'availability': availability})
+
+
+@login_required
+def delete_availability(request, pk):
+    availability = get_object_or_404(Availability, pk=pk, customer=request.user)
+    if request.method == 'POST':
+        availability.delete()
+        return redirect('client_dashboard')

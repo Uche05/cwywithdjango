@@ -53,6 +53,8 @@ if DJANGO_ENV == 'production':
     SECURE_SSL_REDIRECT = True
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
+
+
 else:
     SECURE_SSL_REDIRECT = False
     CSRF_COOKIE_SECURE = False
@@ -83,8 +85,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #setting a admin access middleware for security
-    #'cwyproject.middleware.AdminAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'cwyproject.urls'
@@ -177,8 +177,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
-# # Only redirect HTTP to HTTPS in production
-# if not DEBUG:
-#     SECURE_SSL_REDIRECT = True
-# else:
-#     SECURE_SSL_REDIRECT = False
+
+# Logout after 10 minutes of inactivity
+SESSION_COOKIE_AGE = 10 * 60
+SESSION_SAVE_EVERY_REQUEST = True

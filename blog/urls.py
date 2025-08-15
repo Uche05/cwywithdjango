@@ -21,4 +21,8 @@ urlpatterns = [
     path("dashboard/staff/", views.staff_dashboard, name="staff_dashboard"),
     path("dashboard/client/", views.client_dashboard, name="client_dashboard"),
     path("dashboard/admin/", views.admin_dashboard, name="admin_dashboard"),
+    path('logout/', views.logout_view, name='logout'),
+    path('dashboard/client/add-availability/', views.add_availability, name='add_availability'),
+    path('dashboard/client/edit-availability/<int:pk>/', views.edit_availability, name='edit_availability'),
+    path('dashboard/client/delete-availability/<int:pk>/', views.delete_availability, name='delete_availability'),
 ]

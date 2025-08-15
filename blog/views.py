@@ -9,44 +9,48 @@ from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
                      UserProfile)
 
 
-# done with aid from ChatGPT
+#   Home page
 def home(request):
     context = {}
 
     if request.user.is_authenticated:
-        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-        user_type = user_profile.user_type
-        context["user"] = user_profile
-        context["user_type"] = user_type
-        # (add more context here as needed)
-    
+        # Get or create UserProfile automatically
+        profile, created = UserProfile.objects.get_or_create(user=request.user)
+        context["user"] = profile
+        context["user_type"] = profile.user_type
+
     return render(request, "blog/index.html", context)
 
 
-
 def jobpost(request):
-    return render(request, "blog/jobpost.html")  # Renders the job post page
+    return render(request, "blog/jobpost.html")
 
 
 def contact(request):
-    return render(request, "blog/contact.html")  # Renders the contact page
+    if request.method == "POST":
+        form = ContactInterestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your interest has been registered successfully!")
+            return redirect("contact")
+        else:
+            messages.error(request, "Please check the form for errors.")
+    else:
+        form = ContactInterestForm()
+
+    return render(request, "blog/contact.html", {"form": form})
 
 
-# Add any additional views here as needed
 def privacy_policy(request):
-    return render(
-        request, "blog/privacy_policy.html"
-    )  # Renders the privacy policy page
+    return render(request, "blog/privacy_policy.html")
 
 
 def terms_of_use(request):
-    return render(request, "blog/terms_of_use.html")  # Renders the terms of use page
+    return render(request, "blog/terms_of_use.html")
 
 
 def terms_and_conditions(request):
-    return render(
-        request, "blog/terms_and_conditions.html"
-    )  # Renders the terms and conditions page
+    return render(request, "blog/terms_and_conditions.html")
 
 
 def recruitment(request):
@@ -57,32 +61,17 @@ def recruitment(request):
             if form.is_valid() and 'declaration' in request.POST:
                 form.save()
                 messages.success(request, "Your application has been submitted successfully!")
+                return redirect("recruitment")
             else:
-                form = JobApplicationForm()
                 messages.error(request, "Please check the form for errors.")
-        return render(request, "blog/recruitment.html", {"form": form})  # Renders the recruitment page
+        else:
+            form = JobApplicationForm()
+
+        return render(request, "blog/recruitment.html", {"form": form})
     except Exception as e:
         return HttpResponseServerError("An error occurred: " + str(e))
 
-def contact(request):
-    # done with aid from ChatGPT
-    # this view handles the contact form submission
-    if request.method == "POST":
-        form = ContactInterestForm(request.POST)
-        if form.is_valid():  # is_valid() is called on the form, not the model
-            form.save()  # Save the valid form data to the database
-            messages.success(request, "Your interest has been registered successfully!")
-            return redirect(
-                "contact"
-            )  # Redirect to the same contact page or another page
-    else:
-        form = ContactInterestForm()
-
-    return render(request, "blog/contact.html", {"form": form})
-
-
-# dashbaords for registered users
-
+# Dashboards
 
 @login_required
 def staff_dashboard(request):
@@ -94,9 +83,8 @@ def staff_dashboard(request):
     if profile.user_type != "Staff":
         return HttpResponseForbidden("Access denied")
 
-    else:
-        bookings = Booking.objects.filter(employee=profile)
-        time_off_requests = TimeOffRequest.objects.filter(employee=profile)
+    bookings = Booking.objects.filter(employee=profile.user)
+    time_off_requests = TimeOffRequest.objects.filter(employee=profile.user)
 
     return render(request, "dashboards/staff_dashboard.html", {
         "user": profile,
@@ -105,17 +93,9 @@ def staff_dashboard(request):
     })
 
 
-# to make client and admin similar
+
 @login_required
 def client_dashboard(request):
-    # try:
-    #     profile = request.user.userprofile
-    #     if profile.user_type != "Client":
-    #         return render(request, "403.html")
-    # except UserProfile.DoesNotExist:
-    #     return render(request, "403.html")
-
-    # return render(request, "dashboards/client_dashboard.html")
     try:
         profile = request.user.userprofile
     except UserProfile.DoesNotExist:
@@ -124,8 +104,8 @@ def client_dashboard(request):
     if profile.user_type != "Client":
         return HttpResponseForbidden("Access denied")
 
-    bookings = Booking.objects.filter(employee=profile)
-    time_off_requests = TimeOffRequest.objects.filter(employee=profile)
+    bookings = Booking.objects.filter(customer=profile.user)
+    time_off_requests = TimeOffRequest.objects.filter(employee=profile.user)
 
     return render(request, "dashboards/client_dashboard.html", {
         "user": profile,
@@ -134,13 +114,15 @@ def client_dashboard(request):
     })
 
 
+
 @login_required
 def admin_dashboard(request):
     try:
         profile = request.user.userprofile
-        if profile.user_type != "Admin":
-            return render(request, "403.html")
     except UserProfile.DoesNotExist:
-        return render(request, "403.html")
+        return HttpResponseForbidden("Profile missing")
 
-    return render(request, "dashboards/admin_dashboard.html")
+    if profile.user_type != "Admin":
+        return HttpResponseForbidden("Access denied")
+
+    return render(request, "dashboards/admin_dashboard.html", {"user": profile})

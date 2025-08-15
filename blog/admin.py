@@ -2,7 +2,7 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
 from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
-                     UserProfile)
+                    UserProfile)
 
 
 @admin.register(Availability)

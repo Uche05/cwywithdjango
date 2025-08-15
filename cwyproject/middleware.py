@@ -7,6 +7,6 @@ class AdminAccessMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path.startswith('/admin/') and request.META.get('REMOTE_ADDR') not in ALLOWED_IPS:
+        if request.path == '/admin/' or request.path.startswith('/admin/'):
             return HttpResponseForbidden("Access denied.")
         return self.get_response(request)

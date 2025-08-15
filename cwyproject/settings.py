@@ -84,7 +84,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #setting a admin access middleware for security
-    'cwyproject.middleware.AdminAccessMiddleware',
+    #'cwyproject.middleware.AdminAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'cwyproject.urls'

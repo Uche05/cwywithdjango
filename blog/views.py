@@ -1,14 +1,17 @@
+import json
+
 from django import forms
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden, HttpResponseServerError
+from django.http import (HttpResponseForbidden, HttpResponseServerError,
+                        JsonResponse)
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import ContactInterestForm, JobApplicationForm
 from .models import (Availability, Booking, ContactInterest, TimeOffRequest,
-                     UserProfile)
-
+                    UserProfile)
 
 #   Home page
 def home(request):
@@ -86,13 +89,14 @@ def staff_dashboard(request):
 
     bookings = Booking.objects.filter(employee=profile.user)
     time_off_requests = TimeOffRequest.objects.filter(employee=profile.user)
+    availabilities = Availability.objects.filter(customer=profile.user)  # read-only
 
     return render(request, "dashboards/staff_dashboard.html", {
         "user": profile,
         "bookings": bookings,
         "time_off_requests": time_off_requests,
+        "availabilities": availabilities,
     })
-
 
 
 @login_required
@@ -106,13 +110,14 @@ def client_dashboard(request):
         return HttpResponseForbidden("Access denied")
 
     bookings = Booking.objects.filter(customer=profile.user)
-    time_off_requests = TimeOffRequest.objects.filter(employee=profile.user)
+    availabilities = Availability.objects.filter(customer=profile.user)
 
     return render(request, "dashboards/client_dashboard.html", {
         "user": profile,
         "bookings": bookings,
-        "time_off_requests": time_off_requests,
+        "availabilities": availabilities,
     })
+
 
 
 
@@ -133,42 +138,80 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-#CRUD Capabilites
-@login_required
-def add_availability(request):
-    if request.method == 'POST':
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date')
-        status = request.POST.get('status')
+#CRUD for availabilities
+# Dynamic CRUD
 
-        Availability.objects.create(
-            customer=request.user,
-            start_date=start_date,
-            end_date=end_date,
-            status=status
+@csrf_exempt  # allow AJAX POST requests
+def add_time_off_ajax(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        new_request = TimeOffRequest.objects.create(
+            employee=request.user,
+            start_date=data['start_date'],
+            end_date=data['end_date'],
+            reason=data['reason'],
+            status='Pending'
         )
-        return redirect('client_dashboard')
+        return JsonResponse({
+            "id": new_request.id,
+            "start_date": new_request.start_date,
+            "end_date": new_request.end_date,
+            "reason": new_request.reason,
+            "status": new_request.status
+        })
 
-    return render(request, 'add_availability.html')
+# View all availabilities for the logged-in client
+def view_availabilities(request):
+    if request.method == "GET":
+        availabilities = Availability.objects.filter(customer=request.user)
+        data = [
+            {
+                "id": a.id,
+                "start_date": a.start_date,
+                "end_date": a.end_date,
+                "status": a.status
+            } for a in availabilities
+        ]
+        return JsonResponse({"availabilities": data})
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
+# Add new availability
+@csrf_exempt
+def add_availability(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            start_date = data.get("start_date")
+            end_date = data.get("end_date")
+            status = data.get("status", "OPEN")  # default to OPEN
 
-@login_required
-def edit_availability(request, pk):
-    availability = get_object_or_404(Availability, pk=pk, customer=request.user)
+            new_availability = Availability.objects.create(
+                customer=request.user,
+                start_date=start_date,
+                end_date=end_date,
+                status=status
+            )
 
-    if request.method == 'POST':
-        availability.start_date = request.POST.get('start_date')
-        availability.end_date = request.POST.get('end_date')
-        availability.status = request.POST.get('status')
-        availability.save()
-        return redirect('client_dashboard')
+            return JsonResponse({
+                "id": new_availability.id,
+                "start_date": new_availability.start_date,
+                "end_date": new_availability.end_date,
+                "status": new_availability.status
+            })
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
-    return render(request, 'edit_availability.html', {'availability': availability})
-
-
-@login_required
-def delete_availability(request, pk):
-    availability = get_object_or_404(Availability, pk=pk, customer=request.user)
-    if request.method == 'POST':
-        availability.delete()
-        return redirect('client_dashboard')
+# Delete availability
+@csrf_exempt
+def delete_availability(request, availability_id):
+    if request.method == "DELETE":
+        try:
+            availability = Availability.objects.get(id=availability_id, customer=request.user)
+            availability.delete()
+            return JsonResponse({"success": True})
+        except Availability.DoesNotExist:
+            return JsonResponse({"error": "Availability not found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)

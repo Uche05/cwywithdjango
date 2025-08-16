@@ -40,11 +40,6 @@ if not SECRET_KEY:
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 # the following code was a ChatGPT suggestion for the next 17 lines
-# to stop local HTTPS enforcements
-# by using a custom environment variable
-# to set HTTPS enforce when it is equal to production on Heroku
-# and vice versa when set to development
-
 
 DJANGO_ENV = os.getenv('DJANGO_ENV', 'development').lower()
 
@@ -54,14 +49,12 @@ if DJANGO_ENV == 'production':
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
 
-
 else:
     SECURE_SSL_REDIRECT = False
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SECURE = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-uckj-1f47f900818a.herokuapp.com']
-
 
 # Application definition
 
@@ -108,18 +101,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cwyproject.wsgi.application'
 
 LOGIN_URL = 'login'          # name of the login URL
-
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 #we are using postgres databases
 DATABASES = {

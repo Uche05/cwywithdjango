@@ -2,15 +2,15 @@
 
 ### Manual Testing
 
-After deployment, the heroku app does not work.
+Local manual testing passed, all CRUD operations are working as intended.
 
-Time constraints disallowed for future debugging and testing.
+Deployed manual testing passed, all CRUD operations and logins and logouts are working as intended.
 
 ### User
 
 There are different user types:
 
-1. Unregistered users: Here users do not interact mich with databases but only register their interest and the database stores their information.
+1. Unregistered users: Here users do not interact with databases but only register their interest and the database stores their information.
 2. Registered Users: Here users interact very well with databases.
 
 ### Validation Testing
@@ -21,12 +21,19 @@ Django HTML seems fine
 
 #### Lighthouse/ Accessibility testing
 
+Here is such results when incognito is not used
+<img src="documentation/perf.png">
+
+Here is such results when incognito is used
+<img src="documentation/incogperf.png">
+
+Due to backend capabilities, the testing results from here can be accepted as good.
+
+
 #### Python Testing
 
-Python Testing not done
-
-HTML Testing not done
+Python Testing .....
 
 ### Bugs
 
-There were bugs after deployment, Server Error 500
+There were finally no bugs after deployment.

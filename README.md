@@ -45,11 +45,12 @@
 
 Here is the locally deployed look:
 
-`<img src = "documentation/screenshotone.png" alt= "local-screenshot">`
+<img src = "documentation/screenshotone.png" alt= "local-screenshot">
 
 ## Basic-content
 
-For SECURITY reasons, I decided to remove certain variables set in the settings.py and use environment variables instead.
+For SECURITY reasons, I decided to remove certain variables set in the settings.py and use environment variables instead. Please note that I have added needed credentials to test admin, user and client. We have made it such that only sign ins are possible and not sign ups as per business requirement, the admin who would have their details can add users and then this would be sent to users and clients when needed.
+
 
 ## UX
 

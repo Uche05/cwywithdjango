@@ -45,14 +45,11 @@
 
 Here is the locally deployed look:
 
-<img src = "documentation\screenshotone.png" alt= "local-screenshot">
-
-Here is a video of the deployed demo
-<a href = "documentation\local_demo.mp4">here</a>
+`<img src = "documentation\screenshotone.png" alt= "local-screenshot">`
 
 ## Basic-content
 
-Rewrite what Project 4 is about and a list of necessary general features and how it solves a problem.
+For SECURITY reasons, I decided to remove certain variables set in the settings.py and use environment variables instead.
 
 ## UX
 
@@ -60,7 +57,7 @@ Rewrite what Project 4 is about and a list of necessary general features and how
 
 ### Target-audience
 
- My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members/ employees(staff), administrative workers(admin), and businesses(client) that utilize CWY's service.
+ My Project 4 (CWY) is a full stack website which is made to benefit two different kinds of users; a visitor (an unregistered user), and the registered users such as staff members/ employees(staff), administrative workers(admin), and businesses(client) that utilize CWY's service. Please
 
 ### User-stories
 
@@ -90,7 +87,7 @@ Future
 
 ### Colour-scheme
 
-<img src = "documentation\screenshotcolorscheme.png" alt = "color schemes screenshot">
+`<img src = "documentation\screenshotcolorscheme.png" alt = "color schemes screenshot">`
 
 ### Typography
 
@@ -102,7 +99,7 @@ Future
 
 ### Wireframes
 
-<img src = "documentation\wireframe.png" alt = "wireframes screenshot">
+`<img src = "documentation\wireframe.png" alt = "wireframes screenshot">`
 
 ### Flow-diagram
 
@@ -135,36 +132,35 @@ UserProfile Table
 
  Availability Table
 
-| Key | Column Name | Type                              |
-| --- | ----------- | --------------------------------- |
-| PK  | AvailabilityID      | SERIAL                            |
-| FK to Users.UsersID | CustomerID  | VARCHAR(255)                      |
-|     | StartDate       | DATETIME                      |
-|     | EndDate    |     DATETIME                        |
-|     | Status    | ENUM ("OPEN", "CLOSED") |
+| Key                 | Column Name    | Type                    |
+| ------------------- | -------------- | ----------------------- |
+| PK                  | AvailabilityID | SERIAL                  |
+| FK to Users.UsersID | CustomerID     | VARCHAR(255)            |
+|                     | StartDate      | DATETIME                |
+|                     | EndDate        | DATETIME                |
+|                     | Status         | ENUM ("OPEN", "CLOSED") |
 
 Bookings Table
 
-| Key | Column Name | Type                              |
-| --- | ----------- | --------------------------------- |
-| PK  | BookingsID  | SERIAL                            |
-| FK to Users.UsersID | CustomerID  | VARCHAR(255)      |
-| FK to Users.UsersID | EmployeeID  | VARCHAR(255)      |
-| FK  | AvailabilityID | SERIAL                         |
-|     | BookingDate   | DATETIME                        |
-|     | Status      |     ENUM ("OPEN", "CLOSED")       |
-
+| Key                 | Column Name    | Type                    |
+| ------------------- | -------------- | ----------------------- |
+| PK                  | BookingsID     | SERIAL                  |
+| FK to Users.UsersID | CustomerID     | VARCHAR(255)            |
+| FK to Users.UsersID | EmployeeID     | VARCHAR(255)            |
+| FK                  | AvailabilityID | SERIAL                  |
+|                     | BookingDate    | DATETIME                |
+|                     | Status         | ENUM ("OPEN", "CLOSED") |
 
 TimeOffRequest Table
 
-| Key | Column Name | Type                              |
-| --- | ----------- | --------------------------------- |
-| PK  | ID      | SERIAL                            |
-| FK to Users.UsersID | EmployeeID  | VARCHAR(255)      |
-|     | StartDate       | DATETIME                      |
-|     | EndDate    |     DATETIME                        |
-|     | Reason    | TextField |
-|     | Status      |     ENUM ("OPEN", "CLOSED")       |
+| Key                 | Column Name | Type                    |
+| ------------------- | ----------- | ----------------------- |
+| PK                  | ID          | SERIAL                  |
+| FK to Users.UsersID | EmployeeID  | VARCHAR(255)            |
+|                     | StartDate   | DATETIME                |
+|                     | EndDate     | DATETIME                |
+|                     | Reason      | TextField               |
+|                     | Status      | ENUM ("OPEN", "CLOSED") |
 
 ContactInterest Table (non-relational to the rest of the tables)
 
@@ -172,21 +168,22 @@ ContactInterest Table (non-relational to the rest of the tables)
 | --- | ----------- | --------------------------------- |
 | PK  | UserID      | SERIAL                            |
 |     | Name        | VARCHAR(255)                      |
-|     | Email       | EMAIL                   |
-|     | Phone   | VARCHAR(11, with regex)                             |
-|     | Message    | ENUM ("Staff", "Client", "Admin") |
-|     | Created At   | VARCHAR(255) only for clients |
+|     | Email       | EMAIL                             |
+|     | Phone       | VARCHAR(11, with regex)           |
+|     | Message     | ENUM ("Staff", "Client", "Admin") |
+|     | Created At  | VARCHAR(255) only for clients     |
 
 # Features
 
 ### Developer-tools
 
-- ChatGPT to aid me with major deployment issues and think of solutions to non-working code that I made.
+- ChatGPT to aid me with major deployment issues and think of solutions to non-working code that I made. I used it for debugging, to help me write tests and introduced me to the concept of environment variables.
 - CSS to design and style the pre-existing HTML structure
 - [Heroku](https://dashboard.heroku.com/apps) used for hosting the deployed front-end & back-end site.
 - HTML to give my website full structure
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
+- Javascript (AJAX) to make adding details dynamic and not involve extra HTML files.
 - Microsoft Sniping tool to take screenshots of my local working deployment
 - [PEP8 CI Linter](https://pep8ci.herokuapp.com/#) used to do checks for errors on my Python Code.
 - Python programming language with Django Framework.
@@ -196,27 +193,59 @@ ContactInterest Table (non-relational to the rest of the tables)
 ### Python Libraries and Packages Used
 
 - Django was the main Python framework used in the project
-- asgiref==3.8.1
-- bleach==6.2.0
-- dj-database-url==0.5.0
-- django-summernote==0.8.20.0
-- gunicorn==20.1.0
-- psycopg2==2.9.10
-- setuptools==78.1.0
-- sqlparse==0.5.3
-- tzdata==2025.2
-- webencodings==0.5.1
-- whitenoise==5.3.0
+
+asgiref==3.8.1
+
+bleach==6.2.0
+
+certifi==2025.1.31
+
+charset-normalizer==3.4.1
+
+dj-database-url==0.5.0
+
+Django==4.2.20
+
+django-summernote==0.8.20.0
+
+djangorestframework==3.16.0
+
+dotenv==0.9.9
+
+gunicorn==20.1.0
+
+idna==3.10
+
+psycopg2==2.9.10
+
+PyJWT==2.10.1
+
+python-dotenv==1.1.1
+
+requests==2.32.3
+
+setuptools==78.1.0
+
+sqlparse==0.5.3
+
+tzdata==2025.2
+
+urllib3==2.4.0
+
+webencodings==0.5.1
+
+whitenoise==5.3.0
 
 ## Testing
 
-The portal has been well tested and the results can be viewed <a href= "#TESTING.md">here </a>.
+The portal has been well tested and the results can be viewed `<a href= "#TESTING.md">`here `</a>`.
 
 ### Future Updates
 
-- Visible Webpage
+- Visiblly asethetic webpage
 - Clients to be able to create accounts.
 - Email notifications after registering interest.
+- More visuals after registering or performing a CRUD operation.
 
 ## Deployment
 
@@ -279,9 +308,7 @@ The following are credits to various people and technologies that have directly 
 | Source                                                                                               | Location                                                | Notes                                                                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Markdown Used](https://github.com/markdaniel1982/MD82-P4/tree/main?tab=readme-ov-file#site-objectives) | Markdown                                                | Markdown template was from the given,[github repo](https://github.com/markdaniel1982/MD82-P4) for the both "README" and "TESTING" from [here](https://github.com/markdaniel1982/MD82-P4) |
-| [As Full Stack Website](https://uche05.github.io/AsFullStackWebsite/)                                   | HTML and CSS and JS templates where extracted from here | More stuff...                                                                                                                                                                      |
-
-
+| [As Full Stack Website](https://uche05.github.io/AsFullStackWebsite/)                                   | HTML and CSS and JS templates where extracted from here | [Here](https://uche05.github.io/AsFullStackWebsite/ "Here")                                                                                                                              |
 
 ### Acknowledgements
 
@@ -290,5 +317,5 @@ The following are credits to various people and technologies that have directly 
 - I would like to thank the [Code Institute](https://codeinstitute.net) facilitator team, [Iris Smok](https://github.com/Iris-Smok/Iris-Smok), [the Code Institute Student Care Team](studentcare@codeinstitute.net) and [Irene Neville](irene.neville@codeinstitute.net) for their advice.
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support and general information that helps with my studies with Code Institute.
 - I would like to thank my family, for their support and understanding, for believing in me, and allowing me to make this transition into software development.
-- I personally enjoyed performing this project as it was a chance to both construct and actually program using coding programming techniques and paradigms; to make a functional content myself.
+- I personally enjoyed performing this project as it was a chance to both construct a program using coding programming techniques and paradigms; to make a functional content myself while properly iterating tasks to be performed.
 - Written and edited by Uchechukwu Christian Kpadeuwa

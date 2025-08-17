@@ -47,7 +47,7 @@
 
                 <div class="mt-3">
                     <h6>Add New Client</h6>
-                    <form id="add-client-form">
+                    <form id="add-client-form" action="{% url 'add_client' %}" method="post">
                         {% csrf_token %}
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="last_name" placeholder="Last Name" required>
@@ -94,7 +94,7 @@
 
                 <div class="mt-3">
                     <h6>Add New Staff</h6>
-                    <form id="add-staff-form">
+                    <form id="add-staff-form" action="{% url 'add_staff' %}" method="post">
                         {% csrf_token %}
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="last_name" placeholder="Last Name" required>
@@ -148,7 +148,7 @@
 
                 <div class="mt-3">
                     <h6>Add New Booking</h6>
-                    <form id="add-booking-form">
+                    <form id="add-booking-form" action="{% url 'add_booking' %}" method="post">
                         {% csrf_token %}
                         <select name="client" required>
                             <option value="">Select Client</option>

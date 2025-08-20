@@ -23,7 +23,7 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #load .env file at project root
-load_dotenv(os.path.join(BASE_DIR, '.env.cwyp1'))
+load_dotenv(os.path.join(BASE_DIR, '.env.cwpm'))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
